@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Online Quiz</title>
+</head>
+<body>
+    <h1>Online Quiz</h1>
+    <form id="quiz-form">
+        <p>1. Which of these is a suburb of Wichita?</p>
+        <label>
+            <input type="radio" name="q1" value="vinicius"> Vinicius
+        </label>
+        <label>
+            <input type="radio" name="q1" value="andover"> Andover
+        </label>
+        <label>
+            <input type="radio" name="q1" value="richarlison"> Richarlison
+        </label>
+        <br>
+
+        <p>2. Which is the most populated city in Kansas?</p>
+        <label>
+            <input type="radio" name="q2" value="kansascity"> Kansas City
+        </label>
+        <label>
+            <input type="radio" name="q2" value="wichita"> Wichita
+        </label>
+        <label>
+            <input type="radio" name="q2" value="topeka"> Topeka
+        </label>
+        <br>
+
+        <p>3. Which is not a university or college located in Wichita?</p>
+        <label>
+            <input type="radio" name="q3" value="newman"> Newman
+        </label>
+        <label>
+            <input type="radio" name="q3" value="bethel"> Bethel
+        </label>
+        <label>
+            <input type="radio" name="q3" value="lincoln"> Lincoln
+        </label>
+        <br>
+
+        <p>4. Which professional wrestler attended Wichita State University?</p>
+        <label>
+            <input type="radio" name="q4" value="hardcoreholly"> Hardcore Holly
+        </label>
+        <label>
+            <input type="radio" name="q4" value="thebigshow"> The Big Show
+        </label>
+        <label>
+            <input type="radio" name="q4" value="sgtslaughter"> Sgt. Slaughter
+        </label>
+        <br>
+
+        <p>5. What is the graduation rate at WSU Tech?</p>
+        <label>
+            <input type="radio" name="q5" value="35.5%"> 35.5%
+        </label>
+        <label>
+            <input type="radio" name="q5" value="68.7%"> 68.7%
+        </label>
+        <label>
+            <input type="radio" name="q5" value="89.3%"> 89.3%
+        </label>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        const form = document.getElementById('quiz-form');
+        const resultsDiv = document.getElementById('results');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let score = 0;
+
+            // Check answers and calculate the score
+            const answers = ["andover", "wichita", "lincoln", "thebigshow", "35.5%"];
+            for (let i = 1; i <= 5; i++) {
+                const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === answers[i - 1]) {
+                        score++;
+                    }
+                }
+            }
+
+            // Display the score
+            resultsDiv.innerHTML = `Your score: ${score} out of 5`;
+        });
+    </script>
+</body>
+</html>
